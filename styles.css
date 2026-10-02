@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Ақ Отау RestoBar — страница меню
+   Только фотографии меню: во всю ширину, в том же порядке.
+   Вёрстки нет — ни шапки, ни подвала, ни текста.
+   ========================================================================== */
+
+html {
+  background: #000;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+}
+
+/* Каждая фотография меню — во всю ширину экрана */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+}
+
+/* Кнопка «наверх» — появляется при прокрутке */
+.to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(201, 162, 39, 0.55);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.75);
+  color: #e3c46c;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.to-top:hover {
+  background: #c9a227;
+  color: #000;
+}
+
+/* Печать: каждое фото меню на отдельном листе */
+@media print {
+  .to-top {
+    display: none;
+  }
+
+  img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
